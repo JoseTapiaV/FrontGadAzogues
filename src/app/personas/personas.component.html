@@ -49,12 +49,12 @@
                 <div class="card-body">
                     <!-- Datos para cuando se listen -->
                     <h5 *ngIf="!modosEdicion[usuario.id]" class="card-title text-center">{{usuario.nombre}} {{usuario.apellido}}</h5>
-                    <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item">Usuario: {{usuario.username}}</li>
-                    <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item">Contraseña: {{ocultarContrasena(usuario.password)}}</li>                                                          
-                    <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item">Identificación: {{usuario.identificacion}}</li>
-                    <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item">Correo: {{usuario.correo}}</li>
-                    <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item">Teléfono: {{usuario.telefono}}</li>
-                    <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item">Dirección: {{usuario.direccion}}</li>
+                    <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Usuario:</strong> {{usuario.username}}</li>
+                    <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Contraseña:</strong> {{ocultarContrasena(usuario.password)}}</li>                                                          
+                    <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Identificación:</strong> {{usuario.identificacion}}</li>
+                    <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Correo:</strong> {{usuario.correo}}</li>
+                    <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Teléfono:</strong> {{usuario.telefono}}</li>
+                    <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Dirección:</strong> {{usuario.direccion}}</li>
                 </div>
                 
             </div>
