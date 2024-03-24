@@ -1,0 +1,154 @@
+<ul class="nav nav-tabs d-flex justify-content-between">
+  <div class="d-flex">
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="/Principal">Inicio</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/Personas">Personas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/Vehiculos">Vehículos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="/Reservas">Reservas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/Sugerencias">Sugerencias</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/Mantenimientos">Mantenimientos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/Repuestos">Respuestos</a>
+    </li>
+  </div>
+  <li class="nav-item">
+    <form class="d-flex" role="search">
+      <button class="btn btn-outline-danger" routerLink="/" (click)="limpiarDatosSesion()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-box-arrow-left"
+          viewBox="0 0 19 19">
+          <path fill-rule="evenodd"
+            d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
+          <path fill-rule="evenodd"
+            d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+        </svg>
+        Cerrar sesión
+      </button>
+    </form>
+  </li>
+</ul>
+
+<div class="d-flex flex-row justify-content-center py-3">
+
+  <!-- Primera Section: Búsqueda entre fechas -->
+  <div class="mx-2">
+    <div class="card" style="width: 25rem; margin: 10px; background-color: rgba(255, 255, 255, 0.507);">
+      <div class="card-body">
+        <h5 class="card-title text-center">Búsqueda entre fechas</h5>
+        <label for="fechaInicio">Fecha desde:</label>
+        <input type="date" id="fechaInicio" [(ngModel)]="fechaInicio" (change)="filtrarReservasPorFechas()" class="form-control">
+  
+        <label for="fechaFin">Hasta:</label>
+        <input type="date" id="fechaFin" [(ngModel)]="fechaFin" [min]="fechaInicio" (change)="filtrarReservasPorFechas()" class="form-control">
+        
+        <div class="card-body text-center">
+          <button class="btn btn-success mx-2" (click)="refrescarListado()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise"
+              viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z" />
+            <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466" />
+            </svg> 
+            Limpiar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Segunda Section: Buscar vehículo por placa -->
+  <div class="mx-2">
+    <div class="card" style="width: 25rem; margin: 10px; background-color: rgba(255, 255, 255, 0.507);">
+      <div class="card-body">
+        <h5 class="card-title text-center">Buscar vehículo por placa</h5>
+        <label for="placaBuscar">Placa:</label>
+        <input type="text" id="placaBuscar" class="form-control" [(ngModel)]="placaBuscar" required>
+        <div class="card-body text-center">
+          <button (click)="buscarVehiculo()" class="btn btn-success">Buscar Vehículo</button>
+        </div>
+        <!-- Vehículo encontrado -->
+        <div *ngIf="vehiculoEncontrado">
+          <h5 class="card-title text-center">Datos del vehículo</h5>
+          <div class="text-center">
+            <table class="table table-bordered table-hover" style="width: 100%;">
+              <thead>
+                <tr>
+                  <th>Placa</th>
+                  <th>Marca</th>
+                  <th>Modelo</th>
+                  <th>Opción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{vehiculoEncontrado.placa}}</td>
+                  <td>{{vehiculoEncontrado.marca}}</td>
+                  <td>{{vehiculoEncontrado.modelo}}</td>
+                  <td><button class="btn btn-success" (click)="agregarPlacaVehiculo()">+</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 class="d-flex flex-row justify-content-center py-3" style="color: rgb(255, 255, 255);">Listado de Reservas</h2>
+<div class="d-flex flex-row justify-content-center py-3">
+  <div style="max-width: max-content; overflow: auto; background-color: rgba(255, 255, 255, 0.507);">
+    <table class="table table-bordered table-hover" style="width: 100%;">
+      <thead>
+        <tr>
+          <th>Cédula</th>
+          <th>Vehículo</th>
+          <th>Fecha de Inicio</th>
+          <th>Fecha de Fin</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Crear una nueva reserva -->
+        <tr>
+          <td *ngIf="!reserva.editando"></td>
+          <td *ngIf="!reserva.editando"><input type="text" [(ngModel)]="reserva.vehiculoPlaca" class="form-control" required readonly></td>
+          <td *ngIf="!reserva.editando"><input type="datetime-local" [(ngModel)]="reserva.fechaInicio" class="form-control" required></td>
+          <td *ngIf="!reserva.editando"><input type="datetime-local" [(ngModel)]="reserva.fechaFin" class="form-control" [min]="reserva.fechaInicio" required></td>
+          <td *ngIf="!reserva.editando" class="text-center"><button (click)="crearReserva()" class="btn btn-success mx-2" data-toggle="tooltip" data-placement="top" title="Crear">+</button></td>
+        </tr>
+
+        <!-- Listado de todas las reservas para eliminar o actualizar cada una -->
+        <tr *ngFor="let reserva of reservasFiltradas">
+          <td *ngIf="!reserva.editando">
+            <ng-container *ngIf="reserva.vehiculoReserva && reserva.vehiculoReserva.personaList && reserva.vehiculoReserva.personaList.length > 0">
+              <ng-container *ngFor="let persona of reserva.vehiculoReserva.personaList">
+                <p data-toggle="tooltip" data-placement="top" title="{{persona.nombre}} {{persona.apellido}}"><strong></strong>{{persona.identificacion}} </p>
+              </ng-container>
+            </ng-container>
+          </td>
+          <td *ngIf="!reserva.editando">{{ reserva.vehiculoReserva.placa }}</td>
+          <td *ngIf="!reserva.editando">{{ reserva.fechaInicio | date: 'short' }}</td>
+          <td *ngIf="!reserva.editando">{{ reserva.fechaFin | date: 'short' }}</td>
+          <td *ngIf="!reserva.editando" class="text-center"><button (click)="eliminarReserva(reserva.id)" class="btn btn-danger mx-2"
+              data-toggle="tooltip" data-placement="top" title="Eliminar"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+              </svg></button>
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

@@ -1,0 +1,273 @@
+<ul class="nav nav-tabs d-flex justify-content-between">
+    <div class="d-flex">
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="/Principal">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Personas">Personas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Vehiculos">Vehículos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Reservas">Reservas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Sugerencias">Sugerencias</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/Mantenimientos">Mantenimientos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Repuestos">Respuestos</a>
+      </li>
+    </div>
+    <li class="nav-item">
+      <form class="d-flex" role="search">
+        <button class="btn btn-outline-danger" routerLink="/" (click)="limpiarDatosSesion()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-box-arrow-left"
+            viewBox="0 0 19 19">
+            <path fill-rule="evenodd"
+              d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
+            <path fill-rule="evenodd"
+              d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+          </svg>
+          Cerrar sesión
+        </button>
+      </form>
+    </li>
+  </ul>
+
+<div class="d-flex flex-row justify-content-center py-3">
+
+    <!-- Buscar todos los repuestos -->
+    <div class="mx-2">
+        <div class="card" style="width: 25rem; margin: 10px; background-color: rgba(255, 255, 255, 0.507);">
+            <div class="card-body">
+                <h5 class="card-title text-center">Buscar repuesto por nombre</h5>
+                <label for="repuestoBuscar">Repuesto:</label>
+                <input type="text" id="repuestoBuscar" class="form-control" [(ngModel)]="repuestoBuscar" required>
+                <div class="card-body text-center">
+                    <button class="btn btn-success" (click)="buscarRepuesto(repuestoBuscar)">Buscar</button>
+                </div>
+                <!-- Repuesto encontrado -->
+                <div *ngIf="repuestoEncontrado && repuestoEncontrado.length > 0">
+                    <h5 class="card-title text-center">Datos del repuestos</h5>
+                    <div class="text-center">
+                        <table class="table table-bordered table-hover" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Repuesto</th>
+                                    <th>Cantidad Total</th>
+                                    <th>Opción</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let repuesto of repuestoEncontrado">
+                                <tr>
+                                    <td>{{repuesto.nombre}}</td>
+                                    <td>{{repuesto.cantidad}}</td>
+                                    <td><button class="btn btn-success" (click)="agregarRepuesto(repuesto)">+</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buscar todos los mecanicos -->
+    <!-- <div class="mx-2">
+        <div class="card" style="width: 25rem; margin: 10px; background-color: rgba(255, 255, 255, 0.507);">
+            <div class="card-body">
+                <h5 class="card-title text-center">Buscar mecánico</h5>
+                <label for="mecanicoBuscar">Mecanico:</label>
+                <input type="text" id="mecanicoBuscar" class="form-control" [(ngModel)]="mecanicoBuscar" required>
+                <div class="card-body text-center">
+                    <button class="btn btn-success" (click)="buscarMecanico(mecanicoBuscar)">Buscar</button>
+                </div>
+
+                <div *ngIf="mecanicoEncontrado && mecanicoEncontrado.length > 0 ">
+                    <h5 class="card-title text-center">Datos del repuestos</h5>
+                    <div class="text-center">
+                        <table class="table table-bordered table-hover" style="width: 100%;" *ngFor="let mecanico of mecanicoEncontrado">
+                            <thead>
+                                <tr>
+                                    <th>Nombres</th>
+                                    <th>Identificación</th>
+                                    <th>Opción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{mecanico.nombre}} {{mecanico.apellido}}</td>
+                                    <td>{{mecanico.identificacion}}</td>
+                                    <td><button class="btn btn-success" (click)="agregarMecanico(mecanico)">+</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --> 
+
+</div>
+
+<!-- Imprimir matenimiento -->
+<!-- <div class="mx-2">
+    <div style="margin-right: 1px;">
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-primary mx-2" *ngIf="!mostrarAgregarRepuestos && !mostrarAgregarRepuestosDict[mantenimiento.id]" (click)="generarPDF()">
+                Generar PDF <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filetype-pdf" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z"/>
+                  </svg>
+            </button>
+        </div>
+    </div>
+</div> -->
+
+<div class="d-flex flex-row justify-content-center py-3">
+    <div style="max-width: max-content; overflow: auto; margin-left: 20px; margin-right: 20px;">
+        <h2 class=" text-center py-2" style="color: rgb(255, 255, 255);">Listado de mantenimientos</h2>
+        <div id="contenido">
+      <table class="table table-bordered table-hover" style="width: 100%; background-color: rgba(255, 255, 255, 0.507);">
+        <thead class="text-center">
+                <tr>
+                    <th>Persona</th>
+                    <th>Placa</th>
+                    <th>Repuestos</th>
+                    <th>Fecha mantenimiento</th>
+                    <th>Tipo mantenimiento</th>
+                    <th>Descripción</th>
+                    <th>Tipo Sistema</th>
+                    <th>KM Actual</th>
+                    <th>KM Próximo cambio</th>
+                    <th>Mantenimiento</th>
+                    <th>Opciones</th>
+                </tr>                
+            </thead>
+            <tbody>
+                <!-- Crear una nueva reserva -->
+                <tr>
+                   <td colspan="14" class="text-center"><button class="btn btn-success"
+                    (click)="toggleFormularioCreacion()">Crear un mantenimiento nuevo</button></td> 
+                </tr>
+                <!-- Formulario -->
+                <tr *ngIf="mostrarFormularioCreacion">
+                    <td colspan="14">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <div class="card" style="width: 40rem; margin: 10px;">
+                                <div class="card-body">
+                                    <h2 class="text-center">Nuevo Mantenimiento</h2>
+                                    <div class="row">
+                                        <!-- Columna 1 -->
+                                        <div class="col-md-6">
+                                            <label>Placa del vehículo:</label>
+                                            <input type="text" [(ngModel)]="mantenimiento.placaVehiculo" class="form-control" required>
+
+                                            <label>Identificación persona:</label>
+                                            <input type="text" [(ngModel)]="mantenimiento.personasIdentificacion" class="form-control" required>
+                                            
+                                            <label>Fecha del mantenimiento:</label>
+                                            <input type="datetime-local" [(ngModel)]="mantenimiento.fechaMantenimiento" class="form-control" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Tipo de mantenimiento:</label>
+                                            <select [(ngModel)]="mantenimiento.tipoMantenimiento" class="form-control" required>
+                                                <option value="PREVENTIVO">PREVENTIVO</option>
+                                                <option value="CORRECTIVO">CORRECTIVO</option>
+                                            </select>
+
+                                            <label>Descripción:</label>
+                                            <input type="text" [(ngModel)]="mantenimiento.descripcion" class="form-control" required>
+
+                                            <label>Tipo de sistema:</label>
+                                            <select [(ngModel)]="mantenimiento.tipoSistema" class="form-control" required>
+                                                <option value="MOTOR">MOTOR</option>
+                                                <option value="SISTEMA_ELECTRICO">SISTEMA ELECTRICO</option>
+                                                <option value="TREN_MOTRIZ">TREN MOTRIZ</option>
+                                            </select>
+
+                                            <label>Kilometraje actual:</label>
+                                            <input type="number" [(ngModel)]="mantenimiento.kilometrajeActual" class="form-control" required>
+
+                                        </div>
+                                    </div>
+                                    <!-- Botones de acción -->
+                                    <div class="card-body text-center">
+                                        <button type="button" class="btn btn-success mx-2" (click)="toggleFormularioCreacion()">Cancelar</button>
+                                        <button type="button" class="btn btn-primary mx-2" (click)="crearMantenimiento()">Crear Mantenimiento</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Listado de los mantenimientos -->
+                <tr *ngFor="let mantenimiento of mantenimientos" class="text-center">
+                    <ng-container *ngIf="mantenimiento.estadoMantenimiento === 'VIGENTE'">
+                    
+                        <td colspan="10" *ngIf="mostrarAgregarRepuestosDict[mantenimiento.id]">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <div class="card" style="width: 40rem; margin: 10px;">
+                                    <div class="card-body">
+                                        <h2 class="text-center">Agregar repuesto</h2>
+                                        <label for="idAgregarRepuestoMantenimiento">Repuesto:</label>
+                                        <input type="number" id="idAgregarRepuestoMantenimiento" [(ngModel)]="repuesto.repuestoId" class="form-control" required readonly>
+                                        <label>Cantidad: </label>
+                                        <input type="number" [(ngModel)]="repuesto.cantidadRepuesto" class="form-control" required>
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <button type="button" class="btn btn-success mx-2" (click)="agregarRepuestoMantenimiento(mantenimiento.id)">Agregar repuesto</button>
+                                        <button type="button" class="btn btn-secondary" (click)="toggleMostrarAgregarRepuestos(mantenimiento.id)">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+
+                        <td *ngIf="!mostrarAgregarRepuestos && !mostrarAgregarRepuestosDict[mantenimiento.id]">{{ mantenimiento.identificacion }}</td>
+                        <td *ngIf="!mostrarAgregarRepuestos && !mostrarAgregarRepuestosDict[mantenimiento.id]">{{ mantenimiento.vehiculoMantenimiento }}</td>
+                        <td *ngIf="!mostrarAgregarRepuestos && !mostrarAgregarRepuestosDict[mantenimiento.id]">
+                            <button class="btn btn-success" (click)="toggleMostrarRepuestos(mantenimiento.id)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-square-fill" viewBox="0 0 16 16">
+                                    <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm4 4a.5.5 0 0 0-.374.832l4 4.5a.5.5 0 0 0 .748 0l4-4.5A.5.5 0 0 0 12 6z"/>
+                                </svg>
+                            </button>
+                        </td>
+                        <td *ngIf="!mostrarAgregarRepuestos && !mostrarAgregarRepuestosDict[mantenimiento.id]">{{ mantenimiento.fechaMantenimiento | date: 'short' }}</td>
+                        <td *ngIf="!mostrarAgregarRepuestos && !mostrarAgregarRepuestosDict[mantenimiento.id]">{{ mantenimiento.tipoMantenimiento }}</td>
+                        <td *ngIf="!mostrarAgregarRepuestos && !mostrarAgregarRepuestosDict[mantenimiento.id]">{{ mantenimiento.descripcion }}</td>
+                        <td *ngIf="!mostrarAgregarRepuestos && !mostrarAgregarRepuestosDict[mantenimiento.id]">{{ transformarTipoSistema(mantenimiento.tipoSistema) }}</td>
+                        <td *ngIf="!mostrarAgregarRepuestos && !mostrarAgregarRepuestosDict[mantenimiento.id]">{{ mantenimiento.kilometrajeActual}}</td>
+                        <td *ngIf="!mostrarAgregarRepuestos && !mostrarAgregarRepuestosDict[mantenimiento.id]">{{ mantenimiento.proximoCambio }}</td>
+                        <td *ngIf="!mostrarAgregarRepuestos && !mostrarAgregarRepuestosDict[mantenimiento.id]">{{ transformarTipoMantenimiento(mantenimiento.tiempoMantenimiento) }}</td>
+                        <td class="text-center">
+                            <!-- Finalizar mantenimiento -->
+                            <button class="btn btn-danger mx-2" (click)="finalizarMantenimiento(mantenimiento.id)" *ngIf="!mostrarAgregarRepuestos && !mostrarAgregarRepuestosDict[mantenimiento.id]">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-trash" viewBox="0 0 16 16">
+                                    <path
+                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                                    <path
+                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                                </svg>
+                            </button>
+
+                            <!-- Agregar repuestos -->
+                            <button class="btn btn-success" (click)="toggleMostrarAgregarRepuestos(mantenimiento.id)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16">
+                                    <path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3q0-.405-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"/>
+                                  </svg>
+                            </button>
+
+                        </td>
+                    </ng-container>
+                </tr>
+            </tbody>          
+        </table>
+        </div>
+    </div>
+</div>

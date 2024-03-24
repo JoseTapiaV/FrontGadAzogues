@@ -1,0 +1,149 @@
+<ul class="nav nav-tabs justify-content-between">
+    <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="/Principal">Inicio</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Personas">Personas</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Vehiculos">Vehículos</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Reservas">Reservas</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Sugerencias">Sugerencias</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/Mantenimientos">Mantenimientos</a>
+    </li>
+    <li class="nav-item" style="margin-right: auto;">
+        <a class="nav-link active" href="/Repuestos">Respuestos</a>
+    </li>
+    <li class="d-flex align-items-center">
+        <form class="d-flex" role="search">
+            <button class="btn btn-outline-danger" routerLink="/" (click)="limpiarDatosSesion()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                    class="bi bi-box-arrow-left" viewBox="0 0 19 19">
+                    <path fill-rule="evenodd"
+                        d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
+                    <path fill-rule="evenodd"
+                        d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+                </svg>
+                Cerrar sesión
+            </button>
+        </form>
+    </li>
+</ul>
+
+<div class="d-flex flex-row justify-content-center py-3">
+    <h2 style="color: rgb(255, 255, 255);">Búsqueda por nombre</h2>
+</div>
+
+<div class="d-flex flex-row justify-content-center py-3">
+    <div class="d-flex align-items-center">
+        <label for="nombreBusqueda"></label>
+        <div class="input-group">
+            <input type="text" [(ngModel)]="nombreBusqueda" class="form-control"
+                placeholder="Ingrese el nombre del repuesto" style="width: 275px;">
+            <div class="input-group-append">
+                <button class="btn btn-secondary" (click)="refrescarListado()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                      </svg>
+                </button>
+            </div>
+        </div>
+        <button class="btn btn-success mx-2" (click)="buscarPorNombre()">Buscar</button>
+    </div>
+</div>
+
+
+<div class="d-flex flex-row justify-content-center py-3">
+    <h2 style="color: rgb(255, 255, 255);">Lista de Respuestos</h2>
+</div>
+
+<div class="d-flex flex-row justify-content-center py-3">
+    <div style="max-width: max-content; overflow: auto; margin-left: 20px; margin-right: 20px; background-color: rgba(255, 255, 255, 0.507);">
+      <table class="table table-bordered table-hover" style="width: 100%;">
+        <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Valor Unitario</th>
+                    <th>Valor Total</th>
+                    <th>Modelo</th>
+                    <th>Registro</th>
+                    <th>Actualizado</th>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--Formulario para crear un repuesto nuevo-->
+                <!--<tr *ngIf="mostrarFormularioCrear"> Sirve para ocultar el formulario para crear -->
+                <tr>
+                    <td *ngIf="!repuesto.editando"><input [(ngModel)]="repuesto.nombre" class="form-control"
+                            placeholder="Nombre" style="width: 100px;"></td>
+                    <td *ngIf="!repuesto.editando"><input [(ngModel)]="repuesto.cantidad" class="form-control"
+                            placeholder="Cantidad" style="width: 95px;"></td>
+                    <td *ngIf="!repuesto.editando"><input [(ngModel)]="repuesto.valorUnitario" class="form-control"
+                            placeholder="Valor" style="width: 80px;"></td>
+                    <td *ngIf="!repuesto.editando"></td> <!-- Placeholder para Valor Total -->
+                    <td *ngIf="!repuesto.editando">
+                        <select [(ngModel)]="repuesto.modelo" class="form-control" style="width: 100px;">
+                          <option *ngFor="let modelo of modelosDisponibles" [value]="modelo">{{ modelo }}</option>
+                        </select>
+                      </td>
+                    <td *ngIf="!repuesto.editando"></td> <!-- Placeholder para Registro -->
+                    <td *ngIf="!repuesto.editando"></td> <!-- Placeholder para Actualizado -->
+                    <td *ngIf="!repuesto.editando" class="text-center">
+                        <button class="btn btn-success mx-2" (click)="crearRepuesto()">+</button>
+                    </td>
+                </tr>
+                <!--Listado de todos los repuestos-->
+                <tr *ngFor="let repuesto of repuestos">
+                    <td *ngIf="!repuesto.editando">{{ repuesto.nombre }}</td>
+                    <td *ngIf="!repuesto.editando">{{ repuesto.cantidad }}</td>
+                    <td *ngIf="!repuesto.editando">{{ repuesto.valorUnitario }}</td>
+                    <td *ngIf="!repuesto.editando">{{ repuesto.valorTotal }}</td>
+                    <td *ngIf="!repuesto.editando">{{ repuesto.modelo }}</td>
+                    <td *ngIf="!repuesto.editando">{{ repuesto.registro | date: 'short'}}</td>
+                    <td *ngIf="!repuesto.editando">{{ repuesto.actualizado | date: 'short'}}</td>
+                    <!-- <td *ngIf="!repuesto.editando" class="text-center"><button (click)="eliminarRepuesto(repuesto.id)"
+                            class="btn btn-danger mx-2" data-toggle="tooltip" data-placement="top" title="Eliminar"><svg
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-trash" viewBox="0 0 16 16">
+                                <path
+                                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                                <path
+                                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                            </svg></button>
+                        <button (click)="mostrarFormularioActualizar(repuesto)" class="btn btn-success mx-2"
+                            data-toggle="tooltip" data-placement="top" title="Actualizar">Actualizar</button>
+                    </td> -->
+                    <!--Formulario para la actualización del repuesto-->
+                    <td *ngIf="repuesto.editando"><input [(ngModel)]="repuestoActualizando.nombre" class="form-control"
+                            placeholder="Nombre" style="width: 100px;"></td>
+                    <td *ngIf="repuesto.editando"><input [(ngModel)]="repuestoActualizando.cantidad"
+                            class="form-control" placeholder="Cantidad" style="width: 95px;"></td>
+                    <td *ngIf="repuesto.editando"><input [(ngModel)]="repuestoActualizando.valorUnitario"
+                            class="form-control" placeholder="Valor" style="width: 80px;"></td>
+                    <td *ngIf="repuesto.editando"></td> <!-- Placeholder para Valor Total -->
+                    <td *ngIf="repuesto.editando"><input [(ngModel)]="repuestoActualizando.marca" class="form-control"
+                            placeholder="Marca" style="width: 100px;"></td>
+                    <td *ngIf="repuesto.editando"><input [(ngModel)]="repuestoActualizando.modelo" class="form-control"
+                            placeholder="Modelo" style="width: 100px;"></td>
+                    <td *ngIf="repuesto.editando"></td> <!-- Placeholder para Estado -->
+                    <td *ngIf="repuesto.editando"></td> <!-- Placeholder para Registro -->
+                    <td *ngIf="repuesto.editando"></td> <!-- Placeholder para Actualizado -->
+                    <td *ngIf="repuesto.editando">
+                        <button (click)="actualizarRepuesto()" class="btn btn-primary mx-2" data-toggle="tooltip"
+                            data-placement="top" title="Actualizar">Guardar</button>
+                        <button (click)="cancelarActualizacion()" class="btn btn-secondary mx-2" data-toggle="tooltip"
+                            data-placement="top" title="Cancelar">Cancelar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+<ul class="nav nav-tabs d-flex justify-content-between">
+  <div class="d-flex">
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="/Principal">Inicio</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/Personas">Personas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/Vehiculos">Vehículos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/Reservas">Reservas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="/Sugerencias">Sugerencias</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/Mantenimientos">Mantenimientos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/Repuestos">Respuestos</a>
+    </li>
+  </div>
+  <li class="nav-item">
+    <form class="d-flex" role="search">
+      <button class="btn btn-outline-danger" routerLink="/" (click)="limpiarDatosSesion()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-box-arrow-left"
+          viewBox="0 0 19 19">
+          <path fill-rule="evenodd"
+            d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
+          <path fill-rule="evenodd"
+            d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+        </svg>
+        Cerrar sesión
+      </button>
+    </form>
+  </li>
+</ul>
+
+<h2 class="d-flex flex-row justify-content-center py-3" style="color: rgb(255, 255, 255);">Listado de las sugerencias</h2>
+<div class="d-flex flex-row justify-content-center py-3">
+  <div style="max-width: max-content; overflow: auto; background-color: rgba(255, 255, 255, 0.507);">
+    <table class="table table-bordered table-hover" style="width: 100%;">
+      <thead>
+        <tr>
+          <th>Sugerencia</th>
+          <th>Fecha</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Formulario para crear una sugerencia -->
+        <tr>
+          <td><input [(ngModel)]="mensaje" class="form-control" placeholder="Sugerencia"></td>
+          <td></td>
+          <td class="text-center"><button class="btn btn-success mx-2" (click)="enviarSugerencia()">+</button></td>
+        </tr>
+
+        <!-- Formulario para mostrar todas las sugerencias -->
+        <tr *ngFor="let sugerencia of data">
+          <td>{{ sugerencia.mensaje }}</td>
+          <td>{{ sugerencia.registro | date : 'short' }}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>  
+</div>

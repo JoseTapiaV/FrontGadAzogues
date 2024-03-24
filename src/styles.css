@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+/* Agrega el estilo de ngx-toastr */
+@import '../node_modules/ngx-toastr/toastr.css';
+
+body {
+    background: url('../assets/fondoMunicipio.jpeg') no-repeat center center fixed;
+    background-size: cover;
+  }
+  

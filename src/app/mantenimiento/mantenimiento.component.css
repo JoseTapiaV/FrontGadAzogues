@@ -1,0 +1,11 @@
+.nav-tabs,
+.nav-link,
+.btn,
+svg {
+  color: #ffffff; 
+}
+
+.nav-link:hover,
+.btn:hover {
+  color: #ffffff; 
+}
