@@ -1,64 +1,64 @@
 <ul class="nav nav-tabs d-flex justify-content-between">
-    <div class="d-flex">
-      <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="/Principal">Inicio</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="/Personas">Personas</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/Vehiculos">Vehículos</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/Reservas">Reservas</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/Sugerencias">Sugerencias</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/Mantenimientos">Mantenimientos</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/Repuestos">Respuestos</a>
-      </li>
-    </div>
+  <div class="d-flex">
     <li class="nav-item">
-      <form class="d-flex" role="search">
-        <button class="btn btn-outline-danger" routerLink="/" (click)="limpiarDatosSesion()">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-box-arrow-left"
-            viewBox="0 0 19 19">
-            <path fill-rule="evenodd"
-              d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
-            <path fill-rule="evenodd"
-              d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
-          </svg>
-          Cerrar sesión
-        </button>
-      </form>
+      <a class="nav-link" aria-current="page" [routerLink]="['/Principal']">Inicio</a>
     </li>
-  </ul>
+    <li class="nav-item">
+      <a class="nav-link active" [routerLink]="['/Personas']">Personas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/Vehiculos']">Vehículos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/Reservas']">Reservas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/Sugerencias']">Sugerencias</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/Mantenimientos']">Mantenimientos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/Repuestos']">Respuestos</a>
+    </li>
+  </div>
+  <li class="nav-item">
+    <form class="d-flex" role="search">
+      <button class="btn btn-outline-danger" routerLink="/" (click)="limpiarDatosSesion()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-box-arrow-left"
+          viewBox="0 0 19 19">
+          <path fill-rule="evenodd"
+            d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
+          <path fill-rule="evenodd"
+            d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+        </svg>
+        Cerrar sesión
+      </button>
+    </form>
+  </li>
+</ul>
 
 <div style="display: flex;">
 
-    <div style="margin-right: 0;" class="py-3">
-        <!-- Listar, actualizar y eliminar -->
-        <h2 style="color: rgb(255, 255, 255);">Lista de los usuarios</h2>
-        <div class="d-flex flex-wrap">
-            <div class="card" style="width: 18rem; margin: 10px; background-color: rgba(255, 255, 255, 0.507);" *ngFor="let usuario of data">
-                
-                <div class="card-body">
-                    <!-- Datos para cuando se listen -->
-                    <h5 *ngIf="!modosEdicion[usuario.id]" class="card-title text-center">{{usuario.nombre}} {{usuario.apellido}}</h5>
-                    <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Usuario:</strong> {{usuario.username}}</li>
-                    <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Contraseña:</strong> {{ocultarContrasena(usuario.password)}}</li>                                                          
-                    <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Identificación:</strong> {{usuario.identificacion}}</li>
-                    <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Correo:</strong> {{usuario.correo}}</li>
-                    <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Teléfono:</strong> {{usuario.telefono}}</li>
-                    <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Dirección:</strong> {{usuario.direccion}}</li>
-                </div>
-                
-            </div>
-        </div>
-    </div>
+  <div style="margin-right: 0;" class="py-3">
+      <!-- Listar, actualizar y eliminar -->
+      <h2 style="color: rgb(255, 255, 255);">Lista de los usuarios</h2>
+      <div class="d-flex flex-wrap">
+          <div class="card" style="width: 18rem; margin: 10px; background-color: rgba(255, 255, 255, 0.507);" *ngFor="let usuario of data">
+              
+              <div class="card-body">
+                  <!-- Datos para cuando se listen -->
+                  <h5 *ngIf="!modosEdicion[usuario.id]" class="card-title text-center">{{usuario.nombre}} {{usuario.apellido}}</h5>
+                  <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Usuario:</strong> {{usuario.username}}</li>
+                  <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Contraseña:</strong> {{ocultarContrasena(usuario.password)}}</li>                                                          
+                  <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Identificación:</strong> {{usuario.identificacion}}</li>
+                  <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Correo:</strong> {{usuario.correo}}</li>
+                  <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Teléfono:</strong> {{usuario.telefono}}</li>
+                  <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Dirección:</strong> {{usuario.direccion}}</li>
+              </div>
+              
+          </div>
+      </div>
+  </div>
 
 </div>
