@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class ReservasService {
 
-  private urlcrearReserva = 'http://localhost:8080/api/reserva/realizarReserva';
-  private urlListarReservas = 'http://localhost:8080/api/reserva/listarReservas';
-  private urlActualizarReserva = 'http://localhost:8080/api/reserva/actualizarReserva';
-  private urlBuscarPorFecha = 'http://localhost:8080/api/reserva/buscarPorFecha';
-  private urlEliminarReserva = 'http://localhost:8080/api/reserva/eliminarReserva/';
+  private urlcrearReserva = 'http://localhost:8181/gestionVehicular/api/reserva/realizarReserva';
+  private urlListarReservas = 'http://localhost:8181/gestionVehicular/api/reserva/listarReservas';
+  private urlActualizarReserva = 'http://localhost:8181/gestionVehicular/api/reserva/actualizarReserva';
+  private urlBuscarPorFecha = 'http://localhost:8181/gestionVehicular/api/reserva/buscarPorFecha';
+  private urlEliminarReserva = 'http://localhost:8181/gestionVehicular/api/reserva/eliminarReserva/';
 
   constructor(private http: HttpClient) { }
 

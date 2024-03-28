@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class SugerenciasService {
 
-  private urlCrearSugerencias = 'http://localhost:8080/api/sugerencia/crearSugerencia';
-  private urlListarSugerencias = 'http://localhost:8080/api/sugerencia/listarSugerencias';
+  private urlCrearSugerencias = 'http://localhost:8181/gestionVehicular/api/sugerencia/crearSugerencia';
+  private urlListarSugerencias = 'http://localhost:8181/gestionVehicular/api/sugerencia/listarSugerencias';
 
   constructor(private http: HttpClient) {}
 

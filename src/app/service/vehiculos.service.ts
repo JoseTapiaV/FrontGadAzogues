@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
 })
 export class VehiculosService {
 
-  private urlActualizarVehiculos = 'http://localhost:8080/api/vehiculo/actualizar';
-  private urlBuscarPorPlaca = 'http://localhost:8080/api/vehiculo/buscarPorPlaca/';
-  private urlCrearVehiculo = 'http://localhost:8080/api/vehiculo/crear';
-  private urlListarVehiculos = 'http://localhost:8080/api/vehiculo/buscarTodos';
-  private urlEliminarVehiculo = 'http://localhost:8080/api/vehiculo/eliminar/';
-  private urlAgregarPersonaVehiculo = 'http://localhost:8080/api/vehiculo/agregarPersonaAVehiculo/';
-  private urlEliminarPersonaDeVehiculo = 'http://localhost:8080/api/vehiculo/eliminarPersonaDeVehiculo/';
+  private urlActualizarVehiculos = 'http://localhost:8181/gestionVehicular/api/vehiculo/actualizar';
+  private urlBuscarPorPlaca = 'http://localhost:8181/gestionVehicular/api/vehiculo/buscarPorPlaca/';
+  private urlCrearVehiculo = 'http://localhost:8181/gestionVehicular/api/vehiculo/crear';
+  private urlListarVehiculos = 'http://localhost:8181/gestionVehicular/api/vehiculo/buscarTodos';
+  private urlEliminarVehiculo = 'http://localhost:8181/gestionVehicular/api/vehiculo/eliminar/';
+  private urlAgregarPersonaVehiculo = 'http://localhost:8181/gestionVehicular/api/vehiculo/agregarPersonaAVehiculo/';
+  private urlEliminarPersonaDeVehiculo = 'http://localhost:8181/gestionVehicular/api/vehiculo/eliminarPersonaDeVehiculo/';
 
   constructor(private http: HttpClient) { }
 

@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class MantenimientoService {
 
-  private urlListarMantenimiento = 'http://localhost:8080/api/mantenimiento/listarMantenimientosP'
-  private urlCrearMantenimiento = 'http://localhost:8080/api/mantenimiento/agendarMantenimiento'
-  private urlFinalizarMantenimiento = 'http://localhost:8080/api/mantenimiento/finalizarMantenimiento/'
-  private urlListarRepuestosPorMantenimiento = 'http://localhost:8080/api/mantenimiento/listarRepuestos/'
-  private urlAgregarRepuesto = 'http://localhost:8080/api/mantenimiento/agregarRepuesto/'
+  private urlListarMantenimiento = 'http://localhost:8181/gestionVehicular/api/mantenimiento/listarMantenimientosP'
+  private urlCrearMantenimiento = 'http://localhost:8181/gestionVehicular/api/mantenimiento/agendarMantenimiento'
+  private urlFinalizarMantenimiento = 'http://localhost:8181/gestionVehicular/api/mantenimiento/finalizarMantenimiento/'
+  private urlListarRepuestosPorMantenimiento = 'http://localhost:8181/gestionVehicular/api/mantenimiento/listarRepuestos/'
+  private urlAgregarRepuesto = 'http://localhost:8181/gestionVehicular/api/mantenimiento/agregarRepuesto/'
 
   constructor(private http:HttpClient) { }
 

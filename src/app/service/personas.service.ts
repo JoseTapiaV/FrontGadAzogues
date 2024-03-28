@@ -7,14 +7,14 @@ import { Observable } from 'rxjs';
 })
 export class PersonasService {
 
-  private urlActualizarPersonas = 'http://localhost:8080/api/persona/actualizar';
-  private urlCrearPersonas = 'http://localhost:8080/api/persona/crear';
-  private urlEliminarPersonas = 'http://localhost:8080/api/persona/eliminar/';
-  private urlListarPersonas = 'http://localhost:8080/api/persona/buscarTodos';
-  private urlBuscarCedula = 'http://localhost:8080/api/persona/buscarPorCedula/';
-  private urlBuscarNombreApellido = 'http://localhost:8080/api/persona/buscarPorNombreOApellido/';
-  private urlBuscarMecanicoNombre = 'http://localhost:8080/api/persona/listarMecanicos/'
-  private urlBuscarChoferNombre = 'http://localhost:8080/api/persona/listarChoferes/'
+  private urlActualizarPersonas = 'http://localhost:8181/gestionVehicular/api/persona/actualizar';
+  private urlCrearPersonas = 'http://localhost:8181/gestionVehicular/api/persona/crear';
+  private urlEliminarPersonas = 'http://localhost:8181/gestionVehicular/api/persona/eliminar/';
+  private urlListarPersonas = 'http://localhost:8181/gestionVehicular/api/persona/buscarTodos';
+  private urlBuscarCedula = 'http://localhost:8181/gestionVehicular/api/persona/buscarPorCedula/';
+  private urlBuscarNombreApellido = 'http://localhost:8181/gestionVehicular/api/persona/buscarPorNombreOApellido/';
+  private urlBuscarMecanicoNombre = 'http://localhost:8181/gestionVehicular/api/persona/listarMecanicos/'
+  private urlBuscarChoferNombre = 'http://localhost:8181/gestionVehicular/api/persona/listarChoferes/'
 
   constructor(private http: HttpClient) { }
 

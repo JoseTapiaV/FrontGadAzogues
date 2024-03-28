@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class RepuestosService {
 
-  private urlListarRepuestos = 'http://localhost:8080/api/repuesto/listarRepuestos'
-  private urlBuscarPorNombre = 'http://localhost:8080/api/repuesto/buscarporNombre/'
-  private urlBuscarPorId = 'http://localhost:8080/api/repuesto/buscarporID/'
-  private urlCrearRepuesto = 'http://localhost:8080/api/repuesto/crearRepuesto'
-  private urlActualizarRepuesto = 'http://localhost:8080/api/repuesto/actualizarRepuesto'
-  private urlEliminarRepuesto = 'http://localhost:8080/api/repuesto/eliminarRepuesto/'
+  private urlListarRepuestos = 'http://localhost:8181/gestionVehicular/api/repuesto/listarRepuestos'
+  private urlBuscarPorNombre = 'http://localhost:8181/gestionVehicular/api/repuesto/buscarporNombre/'
+  private urlBuscarPorId = 'http://localhost:8181/gestionVehicular/api/repuesto/buscarporID/'
+  private urlCrearRepuesto = 'http://localhost:8181/gestionVehicular/api/repuesto/crearRepuesto'
+  private urlActualizarRepuesto = 'http://localhost:8181/gestionVehicular/api/repuesto/actualizarRepuesto'
+  private urlEliminarRepuesto = 'http://localhost:8181/gestionVehicular/api/repuesto/eliminarRepuesto/'
 
   constructor(private http: HttpClient) { }
 
