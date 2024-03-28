@@ -40,22 +40,37 @@
   <div style="margin-right: 0;" class="py-3">
       <!-- Listar, actualizar y eliminar -->
       <h2 style="color: rgb(255, 255, 255);">Lista de los usuarios</h2>
-      <div class="d-flex flex-wrap">
+      <div class="d-flex flex-wrap" *ngIf="rol === 'admin' || rol === 'ADMIN'; else noAdmin">
           <div class="card" style="width: 18rem; margin: 10px; background-color: rgba(255, 255, 255, 0.507);" *ngFor="let usuario of data">
               
-              <div class="card-body" *ngIf="rol === 'admin'">
+              <div class="card-body">
                   <!-- Datos para cuando se listen -->
-                  <h5 *ngIf="!modosEdicion[usuario.id]" class="card-title text-center">{{usuario.nombre}} {{usuario.apellido}}</h5>
-                  <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Usuario:</strong> {{usuario.username}}</li>
-                  <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Contraseña:</strong> {{ocultarContrasena(usuario.password)}}</li>                                                          
-                  <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Identificación:</strong> {{usuario.identificacion}}</li>
-                  <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Correo:</strong> {{usuario.correo}}</li>
-                  <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Teléfono:</strong> {{usuario.telefono}}</li>
-                  <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Dirección:</strong> {{usuario.direccion}}</li>
+                  <h5 class="card-title text-center">{{usuario.nombre}} {{usuario.apellido}}</h5>
+                  <li class="list-group-item"><strong>Usuario:</strong> {{usuario.username}}</li>
+                  <li class="list-group-item"><strong>Contraseña:</strong> {{ocultarContrasena(usuario.password)}}</li>                                                          
+                  <li class="list-group-item"><strong>Identificación:</strong> {{usuario.identificacion}}</li>
+                  <li class="list-group-item"><strong>Correo:</strong> {{usuario.correo}}</li>
+                  <li class="list-group-item"><strong>Teléfono:</strong> {{usuario.telefono}}</li>
+                  <li class="list-group-item"><strong>Dirección:</strong> {{usuario.direccion}}</li>
               </div>
               
           </div>
       </div>
+      <ng-template #noAdmin>
+        <!-- Para roles que no sean administrador -->
+        <div class="card" style="width: 18rem; margin: 10px; background-color: rgba(255, 255, 255, 0.507);" *ngFor="let usuario of data">
+          <div class="card-body" *ngIf="usuario.nombre === nombre && usuario.identificacion === cedula && usuario.rol === rol">
+              <!-- Datos para cuando se listen -->
+              <h5 class="card-title text-center">{{usuario.nombre}} {{usuario.apellido}}</h5>
+              <li class="list-group-item"><strong>Usuario:</strong> {{usuario.username}}</li>
+              <li class="list-group-item"><strong>Contraseña:</strong> {{ocultarContrasena(usuario.password)}}</li>                                                          
+              <li class="list-group-item"><strong>Identificación:</strong> {{usuario.identificacion}}</li>
+              <li class="list-group-item"><strong>Correo:</strong> {{usuario.correo}}</li>
+              <li class="list-group-item"><strong>Teléfono:</strong> {{usuario.telefono}}</li>
+              <li class="list-group-item"><strong>Dirección:</strong> {{usuario.direccion}}</li>
+          </div>
+      </div>
+    </ng-template>
   </div>
 
 </div>

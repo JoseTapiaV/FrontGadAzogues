@@ -27,7 +27,7 @@ export class LoginComponent {
         localStorage.setItem('cedula', response.identificacion)
         localStorage.setItem('rol', response.rol);
         this.router.navigate(['/Principal']);
-        this.toastr.success('Bienvenido ' + response.nombre + response.rol)
+        this.toastr.success('Bienvenido ' + response.nombre)
       },
       (error) => {
         this.toastr.error('Usario o contraseña incorrectos', 'Error')
