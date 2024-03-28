@@ -12,6 +12,7 @@ export class LoginComponent {
 
   username: string = '';
   password: string = '';
+  rol: string = '';
 
   constructor(
     private loginService:LoginService, 
@@ -22,10 +23,11 @@ export class LoginComponent {
   login(): void {
     this.loginService.login(this.username, this.password).subscribe(
       (response) => {
-        localStorage.setItem('nombre', response.ctrnombre)
-        localStorage.setItem('cedula', response.ctrcedula)
+        localStorage.setItem('nombre', response.nombre)
+        localStorage.setItem('cedula', response.identificacion)
+        localStorage.setItem('rol', response.rol);
         this.router.navigate(['/Principal']);
-        this.toastr.success('Bienvenido ')
+        this.toastr.success('Bienvenido ' + response.nombre + response.rol)
       },
       (error) => {
         this.toastr.error('Usario o contraseña incorrectos', 'Error')

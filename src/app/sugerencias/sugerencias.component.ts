@@ -11,6 +11,7 @@ export class SugerenciasComponent implements OnInit{
 
   nombre: string | null = null;
   cedula: string | null = null;
+  rol: string | null = null;
 
   mensaje: string = '';
   data: any[] = [];
@@ -23,6 +24,7 @@ export class SugerenciasComponent implements OnInit{
   ngOnInit(): void {
     this.nombre = localStorage.getItem('nombre')
     this.cedula = localStorage.getItem('cedula')
+    this.rol = localStorage.getItem('rol')
     this.sugerenciasService.getData().subscribe(data => {
       this.data = data;
     });

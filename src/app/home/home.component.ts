@@ -14,10 +14,12 @@ export class HomeComponent {
 
   nombre: string | null = null;
   cedula: string | null = null;
+  rol: string | null = null;
 
   ngOnInit() {
     this.nombre = localStorage.getItem('nombre')
     this.cedula = localStorage.getItem('cedula')
+    this.rol = localStorage.getItem('rol')
     if (this.nombre === null) {
       this.router.navigate(['/']);
     }

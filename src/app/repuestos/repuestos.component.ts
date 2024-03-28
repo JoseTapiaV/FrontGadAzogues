@@ -16,6 +16,7 @@ export class RepuestosComponent implements OnInit {
 
   nombre: string | null = null;
   cedula: string | null = null;
+  rol: string | null = null;
 
   repuestos: any[] = []
 
@@ -40,6 +41,7 @@ export class RepuestosComponent implements OnInit {
   ngOnInit(): void {
     this.nombre = localStorage.getItem('nombre')
     this.cedula = localStorage.getItem('cedula')
+    this.rol = localStorage.getItem('rol')
     this.listarRepuestos()
     if (this.nombre === null) {
       this.router.navigate(['/']);

@@ -13,9 +13,6 @@
       <a class="nav-link active" [routerLink]="['/Reservas']">Reservas</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/Sugerencias']">Sugerencias</a>
-    </li>
-    <li class="nav-item">
       <a class="nav-link" [routerLink]="['/Mantenimientos']">Mantenimientos</a>
     </li>
     <li class="nav-item">
@@ -42,7 +39,7 @@
 
   <!-- Primera Section: Búsqueda entre fechas -->
   <div class="mx-2">
-    <div class="card" style="width: 25rem; margin: 10px; background-color: rgba(255, 255, 255, 0.507);">
+    <div class="card" style="width: 25rem; margin: 10px; background-color: rgba(255, 255, 255, 0.8);">
       <div class="card-body">
         <h5 class="card-title text-center">Búsqueda entre fechas</h5>
         <label for="fechaInicio">Fecha desde:</label>
@@ -67,7 +64,7 @@
 
   <!-- Segunda Section: Buscar vehículo por placa -->
   <div class="mx-2">
-    <div class="card" style="width: 25rem; margin: 10px; background-color: rgba(255, 255, 255, 0.507);">
+    <div class="card" style="width: 25rem; margin: 10px; background-color: rgba(255, 255, 255, 0.8);">
       <div class="card-body">
         <h5 class="card-title text-center">Buscar vehículo por placa</h5>
         <label for="placaBuscar">Placa:</label>
@@ -106,8 +103,8 @@
 
 <h2 class="d-flex flex-row justify-content-center py-3" style="color: rgb(255, 255, 255);">Listado de Reservas</h2>
 <div class="d-flex flex-row justify-content-center py-3">
-  <div style="max-width: max-content; overflow: auto; background-color: rgba(255, 255, 255, 0.507);">
-    <table class="table table-bordered table-hover" style="width: 100%;">
+  <div style="max-width: max-content; overflow: auto; background-color: rgba(255, 255, 255, 0.8);">
+    <table class="table table-bordered table-hover" style="width: 100%;" *ngIf="rol === 'admin'">
       <thead>
         <tr>
           <th>Cédula</th>

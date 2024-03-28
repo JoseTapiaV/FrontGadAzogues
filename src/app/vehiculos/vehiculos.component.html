@@ -13,9 +13,6 @@
       <a class="nav-link" [routerLink]="['/Reservas']">Reservas</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/Sugerencias']">Sugerencias</a>
-    </li>
-    <li class="nav-item">
       <a class="nav-link" [routerLink]="['/Mantenimientos']">Mantenimientos</a>
     </li>
     <li class="nav-item">
@@ -45,7 +42,7 @@
 <div class="d-flex flex-row justify-content-center"
   style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-right: 5px; margin-left: 10px;">
   <div class="d-flex flex-row justify-content-center"
-    style="max-width: max-content; overflow: auto; background-color: rgba(255, 255, 255, 0.507);">
+    style="max-width: max-content; overflow: auto; background-color: rgba(255, 255, 255, 0.8);" >
     <!-- Listar los vehículos -->
     <table class="table table-bordered table-hover" style="width: 100%;" *ngIf="!mostrarTablaVehiculo">
       <thead>

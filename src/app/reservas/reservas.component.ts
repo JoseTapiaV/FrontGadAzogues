@@ -14,6 +14,7 @@ export class ReservasComponent implements OnInit {
 
   nombre: string | null = null;
   cedula: string | null = null;
+  rol: string | null = null;
 
   reservas: any[] = [];
   personaEncontrada: any;
@@ -43,6 +44,7 @@ export class ReservasComponent implements OnInit {
   ngOnInit(): void {
     this.nombre = localStorage.getItem('nombre')
     this.cedula = localStorage.getItem('cedula')
+    this.rol = localStorage.getItem('rol')
     this.listarReservas();
     if (this.nombre === null) {
       this.router.navigate(['/']);

@@ -13,6 +13,7 @@ export class VehiculosComponent implements OnInit {
 
   nombre: string | null = null;
   cedula: string | null = null;
+  rol: string | null = null;
 
   nombreBuscar: string = '';
   personaEncontrada: any[] = [];

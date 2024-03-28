@@ -12,6 +12,7 @@ export class PersonasComponent implements OnInit {
   
   nombre: string | null = null;
   cedula: string | null = null;
+  rol: string | null = null;
 
   modosEdicion: { [key: number]: boolean } = {};
 
@@ -63,6 +64,7 @@ export class PersonasComponent implements OnInit {
   ngOnInit(): void {
     this.nombre = localStorage.getItem('nombre')
     this.cedula = localStorage.getItem('cedula')
+    this.rol = localStorage.getItem('rol')
     this.listarUsuarios();
     if (this.nombre === null) {
       this.router.navigate(['/']);

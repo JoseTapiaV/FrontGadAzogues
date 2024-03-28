@@ -13,9 +13,6 @@
       <a class="nav-link" [routerLink]="['/Reservas']">Reservas</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/Sugerencias']">Sugerencias</a>
-    </li>
-    <li class="nav-item">
       <a class="nav-link" [routerLink]="['/Mantenimientos']">Mantenimientos</a>
     </li>
     <li class="nav-item">
@@ -46,7 +43,7 @@
       <div class="d-flex flex-wrap">
           <div class="card" style="width: 18rem; margin: 10px; background-color: rgba(255, 255, 255, 0.507);" *ngFor="let usuario of data">
               
-              <div class="card-body">
+              <div class="card-body" *ngIf="rol === 'admin'">
                   <!-- Datos para cuando se listen -->
                   <h5 *ngIf="!modosEdicion[usuario.id]" class="card-title text-center">{{usuario.nombre}} {{usuario.apellido}}</h5>
                   <li *ngIf="!modosEdicion[usuario.id]" class="list-group-item"><strong>Usuario:</strong> {{usuario.username}}</li>

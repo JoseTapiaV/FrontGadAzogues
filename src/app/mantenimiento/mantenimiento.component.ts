@@ -26,6 +26,7 @@ export class MantenimientoComponent implements OnInit {
 
   nombre: string | null = null;
   cedula: string | null = null;
+  rol: string | null = null;
 
   repuestoBuscar: string = ''
   repuestoEncontrado: any 
@@ -60,6 +61,7 @@ export class MantenimientoComponent implements OnInit {
   ngOnInit():void {
     this.nombre = localStorage.getItem('nombre')
     this.cedula = localStorage.getItem('cedula')
+    this.rol = localStorage.getItem('rol')
     this.listarMantenimientos()
     if (this.nombre === null) {
       this.router.navigate(['/']);
